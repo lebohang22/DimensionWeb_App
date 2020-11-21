@@ -7,6 +7,8 @@ namespace DimensionWeb_App.Data
 {
     public partial class DimensionDataContext : DbContext
     {
+        internal readonly string RoleName;
+
         public DimensionDataContext()
         {
         }

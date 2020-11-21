@@ -7,12 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DimensionWeb_App.Data;
 using DimensionWeb_App.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DimensionWeb_App.Controllers
 {
     public class DimensionDatasController : Controller
     {
         private readonly DimensionDataContext _context;
+      
 
         public DimensionDatasController(DimensionDataContext context)
         {
@@ -20,12 +23,14 @@ namespace DimensionWeb_App.Controllers
         }
 
         // GET: DimensionDatas
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.DimensionData.ToListAsync());
         }
 
         // GET: DimensionDatas/Details/5
+        
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -44,6 +49,7 @@ namespace DimensionWeb_App.Controllers
         }
 
         // GET: DimensionDatas/Create
+        
         public IActionResult Create()
         {
             return View();
@@ -54,18 +60,22 @@ namespace DimensionWeb_App.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> Create([Bind("Age,Attrition,BusinessTravel,DailyRate,Department,DistanceFromHome,Education,EducationField,EmployeeCount,EmployeeNumber,EnvironmentSatisfaction,Gender,HourlyRate,JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus,MonthlyIncome,MonthlyRate,NumCompaniesWorked,Over18,OverTime,PercentSalaryHike,PerformanceRating,RelationshipSatisfaction,StandardHours,StockOptionLevel,TotalWorkingYears,TrainingTimesLastYear,WorkLifeBalance,YearsAtCompany,YearsInCurrentRole,YearsSinceLastPromotion,YearsWithCurrManager")] DimensionData dimensionData)
         {
+           
             if (ModelState.IsValid)
             {
                 _context.Add(dimensionData);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+           
             return View(dimensionData);
         }
 
         // GET: DimensionDatas/Edit/5
+        
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -86,6 +96,7 @@ namespace DimensionWeb_App.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Edit(string id, [Bind("Age,Attrition,BusinessTravel,DailyRate,Department,DistanceFromHome,Education,EducationField,EmployeeCount,EmployeeNumber,EnvironmentSatisfaction,Gender,HourlyRate,JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus,MonthlyIncome,MonthlyRate,NumCompaniesWorked,Over18,OverTime,PercentSalaryHike,PerformanceRating,RelationshipSatisfaction,StandardHours,StockOptionLevel,TotalWorkingYears,TrainingTimesLastYear,WorkLifeBalance,YearsAtCompany,YearsInCurrentRole,YearsSinceLastPromotion,YearsWithCurrManager")] DimensionData dimensionData)
         {
             if (id != dimensionData.EmployeeNumber)
@@ -117,6 +128,7 @@ namespace DimensionWeb_App.Controllers
         }
 
         // GET: DimensionDatas/Delete/5
+        
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -137,6 +149,7 @@ namespace DimensionWeb_App.Controllers
         // POST: DimensionDatas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var dimensionData = await _context.DimensionData.FindAsync(id);

@@ -33,6 +33,11 @@ namespace DimensionWeb_App.Controllers
             return View();
         }
 
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
