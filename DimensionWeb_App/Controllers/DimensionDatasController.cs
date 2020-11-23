@@ -12,8 +12,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DimensionWeb_App.Controllers
 {
+    [Authorize]
     public class DimensionDatasController : Controller
     {
+        
         private readonly DimensionDataContext _context;
        
 
