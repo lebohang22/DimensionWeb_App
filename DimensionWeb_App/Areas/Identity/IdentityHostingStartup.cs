@@ -19,7 +19,7 @@ namespace DimensionWeb_App.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("DimensionWeb_AppContextConnection")));
 
-                ///services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     //.AddEntityFrameworkStores<DimensionWeb_AppContext>();//
             });
         }
